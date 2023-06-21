@@ -21,7 +21,7 @@ class HomeView extends ConsumerWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text("Current theme: "),
+            Text("${AppLocalizations.of(context)!.currentTheme}:"),
             ElevatedButton(
               onPressed: () {
                 themeNotifer.changeTheme();
