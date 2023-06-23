@@ -1,5 +1,7 @@
 {
   "helloWorld": "Hello World!",
   "lang": "English",
-  "currentTheme": "Current Theme"
+  "changeTheme": "Change Theme",
+  "title": "Title",
+  "changeLang": "Change Language"
 }

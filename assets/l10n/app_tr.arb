@@ -1,5 +1,7 @@
 {
   "helloWorld": "Merhaba Dünya!",
   "lang": "Türkçe",
-  "currentTheme": "Geçerli Tema"
+  "changeTheme": "Tema Değiştir",
+  "title": "Başlık",
+  "changeLang": "Dil Değiştir"
 }
