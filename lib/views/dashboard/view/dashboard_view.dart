@@ -1,25 +1,36 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:riverpod_demo/core/base/base_view.dart';
+import 'package:riverpod_demo/views/dashboard/controller/dashboard_controller.dart';
 
-// ignore: must_be_immutable
-class DashboardView extends ConsumerWidget {
-  const DashboardView({super.key});
+@RoutePage()
+class DashboardPage extends ConsumerWidget {
+  const DashboardPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Scaffold(
-      appBar: AppBar(),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text("Current theme: "),
-            ElevatedButton(
-              onPressed: () {},
-              child: const Text("Change"),
-            ),
-          ],
+    final controller = ref.watch(dashboardProvider);
+
+    return BaseView(
+      onInit: () {
+        controller.getData();
+      },
+      onPageBuilder: (context) => Scaffold(
+        appBar: AppBar(
+          title: const Text("Dashboard View"),
+          automaticallyImplyLeading: false,
         ),
+        body: controller.isLoading
+            ? const Center(
+                child: CircularProgressIndicator(),
+              )
+            : Center(
+                child: ElevatedButton(
+                  onPressed: () {},
+                  child: const Text("Go Home View"),
+                ),
+              ),
       ),
     );
   }

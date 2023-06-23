@@ -22,11 +22,11 @@ class AppTheme {
   ThemeData setLightTheme(BuildContext context) {
     return ThemeData(
       useMaterial3: true,
-      primaryColor: const Color(0xffe6bb22),
+      fontFamily: 'SourceSansPro',
       colorScheme: const ColorScheme(
         brightness: Brightness.light,
         onPrimary: Colors.white,
-        primary: Colors.white,
+        primary: Colors.black,
         secondary: Colors.white,
         onSecondary: Colors.white,
         error: Colors.red,
@@ -36,6 +36,14 @@ class AppTheme {
         surface: Colors.orange,
         onSurface: Colors.black,
       ),
+      textTheme: const TextTheme(
+        headlineLarge: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
+        headlineMedium: TextStyle(fontSize: 24, fontWeight: FontWeight.normal),
+        headlineSmall: TextStyle(fontSize: 14, fontWeight: FontWeight.normal),
+        titleLarge: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+        titleMedium: TextStyle(fontSize: 12, fontWeight: FontWeight.normal),
+        titleSmall: TextStyle(fontSize: 10, fontWeight: FontWeight.normal),
+      ),
     );
   }
 
@@ -43,7 +51,7 @@ class AppTheme {
   ThemeData setDarkTheme(BuildContext context) {
     return ThemeData(
       useMaterial3: true,
-      primaryColor: const Color(0xff222566),
+      fontFamily: 'SourceSansPro',
       colorScheme: const ColorScheme(
         brightness: Brightness.light,
         onPrimary: Colors.white,
@@ -57,6 +65,14 @@ class AppTheme {
         surface: Color(0xff222566),
         onSurface: Colors.black,
       ),
+      textTheme: const TextTheme(
+        headlineLarge: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
+        headlineMedium: TextStyle(fontSize: 24, fontWeight: FontWeight.normal),
+        headlineSmall: TextStyle(fontSize: 14, fontWeight: FontWeight.normal),
+        titleLarge: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+        titleMedium: TextStyle(fontSize: 12, fontWeight: FontWeight.normal),
+        titleSmall: TextStyle(fontSize: 10, fontWeight: FontWeight.normal),
+      ),
     );
   }
 
@@ -64,7 +80,7 @@ class AppTheme {
   ThemeData setGreenTheme(BuildContext context) {
     return ThemeData(
       useMaterial3: true,
-      primaryColor: const Color(0xff2cfc03),
+      fontFamily: 'SourceSansPro',
       colorScheme: const ColorScheme(
         brightness: Brightness.light,
         onPrimary: Colors.white,
@@ -77,6 +93,14 @@ class AppTheme {
         onBackground: Colors.white,
         surface: Color(0xff2cfc03),
         onSurface: Colors.black,
+      ),
+      textTheme: const TextTheme(
+        headlineLarge: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
+        headlineMedium: TextStyle(fontSize: 24, fontWeight: FontWeight.normal),
+        headlineSmall: TextStyle(fontSize: 14, fontWeight: FontWeight.normal),
+        titleLarge: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+        titleMedium: TextStyle(fontSize: 12, fontWeight: FontWeight.normal),
+        titleSmall: TextStyle(fontSize: 10, fontWeight: FontWeight.normal),
       ),
     );
   }

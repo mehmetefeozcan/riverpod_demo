@@ -1,13 +1,10 @@
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:riverpod_demo/core/theme/app_theme_provider.dart';
 import 'package:riverpod_demo/core/utils/language/language.dart';
-import 'package:riverpod_demo/views/home/view/home_view.dart';
+import 'package:riverpod_demo/core/utils/routes/app_router.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:riverpod_demo/core/utils/enums/index.dart';
-import 'package:riverpod_demo/core/theme/app_theme.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_demo/core/theme/index.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -22,23 +19,22 @@ void main() async {
 
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
-  /// Hive init process
-  await Hive.initFlutter();
-  await Hive.openBox(HiveEnums.sessionBox.value);
-
-  runApp(ProviderScope(child: MyApp()));
+  runApp(const ProviderScope(child: MyApp()));
 }
 
-// ignore: must_be_immutable
 class MyApp extends ConsumerWidget {
-  MyApp({super.key});
-  AppTheme appTheme = const AppTheme();
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    AppTheme appTheme = const AppTheme();
     final themeNotifer = ref.watch(appThemeProvider);
     final language = ref.watch(languageProvider);
-    return MaterialApp(
+
+    /// create an instance of `AppRouter`
+    final appRouter = AppRouter();
+
+    return MaterialApp.router(
       localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
@@ -50,9 +46,9 @@ class MyApp extends ConsumerWidget {
         Locale('tr'), // Turkish
       ],
       locale: language,
+      routerConfig: appRouter.config(),
       theme: appTheme.themeData(context, themeNotifer.themeIndex),
       debugShowCheckedModeBanner: false,
-      home: const HomeView(),
     );
   }
 }
