@@ -31,9 +31,6 @@ class MyApp extends ConsumerWidget {
     final themeNotifer = ref.watch(appThemeProvider);
     final language = ref.watch(languageProvider);
 
-    /// create an instance of `AppRouter`
-    final appRouter = AppRouter();
-
     return MaterialApp.router(
       localizationsDelegates: const [
         AppLocalizations.delegate,
@@ -46,7 +43,7 @@ class MyApp extends ConsumerWidget {
         Locale('tr'), // Turkish
       ],
       locale: language,
-      routerConfig: appRouter.config(),
+      routerConfig: AppRouter.router,
       theme: appTheme.themeData(context, themeNotifer.themeIndex),
       debugShowCheckedModeBanner: false,
     );

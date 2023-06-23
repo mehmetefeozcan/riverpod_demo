@@ -1,6 +1,7 @@
 enum NavigationEnums {
-  dashboard('/'),
-  home('/home');
+  splash(''),
+  dashboard('dashboard'),
+  home('home');
 
   final String value;
   const NavigationEnums(this.value);

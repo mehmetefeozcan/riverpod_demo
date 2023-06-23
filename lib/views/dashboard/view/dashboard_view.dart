@@ -1,12 +1,10 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:auto_route/auto_route.dart';
-import 'package:flutter/material.dart';
-import 'package:riverpod_demo/core/base/base_view.dart';
 import 'package:riverpod_demo/views/dashboard/controller/dashboard_controller.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_demo/core/base/base_view.dart';
+import 'package:flutter/material.dart';
 
-@RoutePage()
-class DashboardPage extends ConsumerWidget {
-  const DashboardPage({super.key});
+class DashboardView extends ConsumerWidget {
+  const DashboardView({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -26,9 +24,15 @@ class DashboardPage extends ConsumerWidget {
                 child: CircularProgressIndicator(),
               )
             : Center(
-                child: ElevatedButton(
-                  onPressed: () {},
-                  child: const Text("Go Home View"),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text("Response: ${controller.title!}"),
+                    ElevatedButton(
+                      onPressed: () => controller.goHomePage(context),
+                      child: const Text("Go Home View"),
+                    ),
+                  ],
                 ),
               ),
       ),

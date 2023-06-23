@@ -1,9 +1,9 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 abstract class INavigationService {
-  push({required BuildContext ctx, required PageRouteInfo page});
-  replace({required BuildContext ctx, required PageRouteInfo page});
+  push({required BuildContext ctx, required String path});
+  go({required BuildContext ctx, required String path});
 }
 
 class NavigationService implements INavigationService {
@@ -13,12 +13,12 @@ class NavigationService implements INavigationService {
   static NavigationService get init => _init;
 
   @override
-  push({required BuildContext ctx, required PageRouteInfo page}) {
-    ctx.router.push(page);
+  push({required BuildContext ctx, required String path}) {
+    ctx.push(path);
   }
 
   @override
-  replace({required BuildContext ctx, required PageRouteInfo page}) {
-    ctx.router.replace(page);
+  go({required BuildContext ctx, required String path}) {
+    ctx.go(path);
   }
 }
